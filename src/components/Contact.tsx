@@ -20,7 +20,7 @@ const LinkedinIcon = ({ size = 24 }: { size?: number }) => (
 // 2. Click "New Form", name it "Portfolio Contact"
 // 3. Copy the form ID from the endpoint shown (e.g. "xpwzabcd")
 // 4. Paste it below replacing YOUR_FORM_ID
-const FORMSPREE_ID = "YOUR_FORM_ID";
+const FORMSPREE_ID = "moejwwgw";
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function Contact() {
