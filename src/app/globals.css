@@ -3,16 +3,50 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-slate-100 antialiased;
+    @apply bg-slate-900 text-slate-100 antialiased;
+  }
+
+  ::selection {
+    background-color: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-600;
   }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.7), 0 0 24px rgba(0, 240, 255, 0.3);
   }
+
+  .text-glow-secondary {
+    text-shadow: 0 0 12px rgba(0, 255, 127, 0.7), 0 0 24px rgba(0, 255, 127, 0.3);
+  }
+
   .box-glow {
-    box-shadow: 0 0 15px rgba(0, 255, 127, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 127, 0.25), 0 0 40px rgba(0, 255, 127, 0.1);
+  }
+
+  .box-glow-primary {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.25), 0 0 40px rgba(0, 240, 255, 0.1);
   }
 }
