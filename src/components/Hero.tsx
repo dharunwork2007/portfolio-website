@@ -71,7 +71,7 @@ export default function Hero() {
           <GithubIcon size={24} />
         </a>
         <a
-          href="https://linkedin.com/in/dharunds"
+          href="https://www.linkedin.com/in/dharun-ds-eng/"
           target="_blank"
           rel="noopener noreferrer"
           id="hero-linkedin-btn"

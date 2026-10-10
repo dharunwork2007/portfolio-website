@@ -15,6 +15,14 @@ const LinkedinIcon = ({ size = 24 }: { size?: number }) => (
   </svg>
 );
 
+// ─── Replace this with your real Formspree form ID ───────────────────────────
+// 1. Go to https://formspree.io and sign up with dharunwork2007@gmail.com
+// 2. Click "New Form", name it "Portfolio Contact"
+// 3. Copy the form ID from the endpoint shown (e.g. "xpwzabcd")
+// 4. Paste it below replacing YOUR_FORM_ID
+const FORMSPREE_ID = "YOUR_FORM_ID";
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -27,10 +35,22 @@ export default function Contact() {
     e.preventDefault();
     setStatus("sending");
 
-    // Simulate sending (replace with a real email service like Formspree / EmailJS)
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setStatus("success");
-    setForm({ name: "", email: "", message: "" });
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -53,10 +73,10 @@ export default function Contact() {
             <div>
               <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Email</p>
               <a
-                href="mailto:dharunds@example.com"
+                href="mailto:dharunwork2007@gmail.com"
                 className="text-slate-200 hover:text-primary transition-colors font-medium"
               >
-                dharunds@example.com
+                dharunwork2007@gmail.com
               </a>
             </div>
           </div>
@@ -68,12 +88,12 @@ export default function Contact() {
             <div>
               <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">GitHub</p>
               <a
-                href="https://github.com/dharunds"
+                href="https://github.com/dharunwork2007"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-200 hover:text-primary transition-colors font-medium"
               >
-                github.com/dharunds
+                github.com/dharunwork2007
               </a>
             </div>
           </div>
@@ -85,12 +105,12 @@ export default function Contact() {
             <div>
               <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">LinkedIn</p>
               <a
-                href="https://linkedin.com/in/dharunds"
+                href="https://www.linkedin.com/in/dharun-ds-eng/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-200 hover:text-secondary transition-colors font-medium"
               >
-                linkedin.com/in/dharunds
+                linkedin.com/in/dharun-ds-eng
               </a>
             </div>
           </div>
